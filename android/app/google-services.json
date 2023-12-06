@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1062424957702",
+    "project_id": "society-talk",
+    "storage_bucket": "society-talk.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1062424957702:android:d661b40096e9ab4a6f0487",
+        "android_client_info": {
+          "package_name": "com.example.society_management_projecct"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD6lWv57hUFp-_wlZt0xF-Gr3w2WPLZ80o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
