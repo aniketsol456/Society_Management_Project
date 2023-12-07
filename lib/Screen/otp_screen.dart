@@ -93,7 +93,9 @@ class _OtpScreenState extends State<OtpScreen> {
           builder: (context) => SignupScreento(),
         ),
       );
-    } catch (e) {}
+    } catch (e) {
+      print('This is not a proper otp:$e');
+    }
   }
 
   @override
