@@ -1,10 +1,13 @@
 // import 'package:cloud_firestore/cloud_firestore.dart';
 // import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:society_management_projecct/Screen/main_screen.dart';
 import 'package:society_management_projecct/Screen/otp_screen.dart';
 // import 'package:society_management_projecct/Screen/signup_screen_two.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:society_management_projecct/controller/signup_controller.dart';
+import 'package:society_management_projecct/src/feature/Authentication/models/User_model.dart';
 // import 'package:cloud_firestore/cloud_firestore.dart';
 
 class SignupScreen extends StatefulWidget {
@@ -17,6 +20,13 @@ class SignupScreen extends StatefulWidget {
 }
 
 class _SignupScreenState extends State<SignupScreen> {
+  TextEditingController countrycode = TextEditingController();
+  // TextEditingController firstname = TextEditingController();
+  // TextEditingController lastname = TextEditingController();
+  // TextEditingController phone = TextEditingController();
+  // TextEditingController password = TextEditingController();
+
+  final fromKey = GlobalKey<FormState>();
   bool _showPassword = true;
 
   String _firstName = '';
@@ -31,14 +41,6 @@ class _SignupScreenState extends State<SignupScreen> {
   bool _isValidPassword = true;
   bool _isValidConfirmPassword = true;
 
-  // bool validatePhoneNumber(String phoneNumber) {
-  //   // Regular expression for E.164 format validation
-  //   final RegExp phoneRegex = RegExp(r'^\+[1-9]\d{1,14}$');
-
-  //   return phoneRegex.hasMatch(phoneNumber);
-  // }
-
-  // ignore: unused_element
   void _validateForm() {
     setState(() {
       _isValidFirstName = _firstName.isNotEmpty;
@@ -50,113 +52,6 @@ class _SignupScreenState extends State<SignupScreen> {
           _confirmPassword == _password && _confirmPassword.isNotEmpty;
     });
   }
-
-  // void _submitForm() async {
-  //   _validateForm(); // Validate the form fields before submission
-
-  //   if (_isValidFirstName &&
-  //       _isValidLastName &&
-  //       _isValidPhoneNumber &&
-  //       _isValidPassword &&
-  //       _isValidConfirmPassword) {
-  //     if (!validatePhoneNumber('+$_phoneNumber')) {
-  //       // Notify the user about invalid phone number format
-  //       showDialog(
-  //         context: context,
-  //         builder: (BuildContext context) {
-  //           return AlertDialog(
-  //             title: Text('Invalid Phone Number'),
-  //             content:
-  //                 Text('Please enter a valid phone number in indian format.'),
-  //             actions: <Widget>[
-  //               TextButton(
-  //                 onPressed: () {
-  //                   Navigator.of(context).pop();
-  //                 },
-  //                 child: Text('OK'),
-  //               ),
-  //             ],
-  //           );
-  //         },
-  //       );
-  //       return; // Exit the method if phone number format is invalid
-  //     }
-  //     try {
-  //       // Initialize Firebase
-  //       await Firebase.initializeApp();
-
-  //       // Create user in Firebase Authentication using phone number
-  //       await FirebaseAuth.instance.verifyPhoneNumber(
-  //         phoneNumber: '+91$_phoneNumber',
-  //         verificationCompleted: (PhoneAuthCredential credential) async {
-  //           // Sign in the user with the verification ID and credential
-  //           await FirebaseAuth.instance.signInWithCredential(credential);
-
-  //           // User signed in, navigate to next screen
-  //           Navigator.push(
-  //             context,
-  //             MaterialPageRoute(
-  //               builder: (context) => OtpScreen(
-  //                 verificationId: _verificationId,
-  //               ),
-  //             ),
-  //           );
-  //         },
-  //         verificationFailed: (FirebaseAuthException e) {
-  //           print('Error verifying phone number: $e');
-  //           // Handle verification failure
-  //         },
-  //         codeSent: (String verificationId, int? resendToken) async {
-  //           // Handle OTP code sent to the user's phone
-  //           // You may implement code entry logic here
-  //           print('Code sent: $verificationId');
-  //           _verificationId = verificationId;
-  //           Navigator.push(
-  //             context,
-  //             MaterialPageRoute(
-  //               builder: (context) => OtpScreen(verificationId: verificationId),
-  //             ),
-  //           );
-  //         },
-  //         codeAutoRetrievalTimeout: (String verificationId) {
-  //           // Handle timeout for auto retrieval of OTP
-  //           print('Timeout for code auto retrieval: $verificationId');
-  //         },
-  //       );
-
-  //       // Save user details to Firestore
-  //       // Save user details after successful phone verification if needed
-  //       // Use FirebaseFirestore.instance.collection('users').doc(uid).set({...});
-  //       await FirebaseFirestore.instance.collection('users').add({
-  //         'firstName': _firstName,
-  //         'lastName': _lastName,
-  //         'phoneNumber': _phoneNumber,
-  //         'password': _password,
-  //         // You might want to avoid storing passwords directly in the database for security reasons
-  //         // Instead, consider using Firebase Authentication for user authentication
-  //         // 'password': _password,
-  //       });
-
-  //       // Optionally navigate to the next screen after phone verification
-  //       // Navigator.push(
-  //       //   context,
-  //       //   MaterialPageRoute(
-  //       //     builder: (context) => OtpScreen(),
-  //       //   ),
-  //       // );
-  //     } catch (e) {
-  //       print('Error: $e');
-  //       // Handle errors here
-  //       ScaffoldMessenger.of(context).showSnackBar(
-  //         SnackBar(
-  //           content: Text('Error: $e'),
-  //         ),
-  //       );
-  //     }
-  //   }
-  // }
-
-  TextEditingController countrycode = TextEditingController();
 
   void initstate() {
     countrycode.text = "91";
@@ -170,6 +65,17 @@ class _SignupScreenState extends State<SignupScreen> {
         _isValidPassword &&
         _isValidConfirmPassword) {
       try {
+        if (fromKey.currentState!.validate()) {
+          final Users = Usermodel(
+            firstName: controller.firstname.text.trim(),
+            lastName: controller.lastName.text.trim(),
+            phoneNumber: controller.phoneNumber.text.trim(),
+            password: controller.password.text.trim(),
+          );
+          SignupController.instance.phoneAuthentication(Users);
+          Get.to(() => const OtpScreen());
+        }
+
         await FirebaseAuth.instance.verifyPhoneNumber(
           phoneNumber: '${countrycode.text + _phoneNumber}',
           verificationCompleted: (PhoneAuthCredential credential) {},
@@ -254,6 +160,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: TextField(
+                    controller: controller.firstname,
                     decoration: InputDecoration(
                       labelText: 'First name',
                       floatingLabelBehavior: FloatingLabelBehavior.never,
@@ -279,6 +186,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: TextField(
+                    controller: controller.lastname,
                     decoration: InputDecoration(
                       border: InputBorder.none,
                       labelText: 'Last name',
@@ -305,6 +213,7 @@ class _SignupScreenState extends State<SignupScreen> {
                   ),
                   child: TextField(
                     // controller: countrycode,
+                    controller: controller.phone,
                     keyboardType: TextInputType.number,
                     decoration: InputDecoration(
                       border: InputBorder.none,
@@ -331,6 +240,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: TextField(
+                    controller: controller.password,
                     obscureText: _showPassword,
                     decoration: InputDecoration(
                       border: InputBorder.none,
