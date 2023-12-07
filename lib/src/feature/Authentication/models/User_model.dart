@@ -5,12 +5,20 @@ class Usermodel {
   final String _phoneNumber;
   final String _password;
 
-
   const Usermodel({
-    this.id;
-    required this.firstName;
-    required this.lastName;
-    required this.phoneNumber;
-    required this.password;
-  })
+    this.id,
+    required this.firstName,
+    required this.lastName,
+    required this.phoneNumber,
+    required this.password,
+  });
+
+  toJson() {
+    return {
+      "FirstName": _firstName,
+      "LastName": _lastName,
+      "Phone": _phoneNumber,
+      "Password": _password,
+    };
+  }
 }
