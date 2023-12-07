@@ -1,9 +1,9 @@
 class Usermodel {
   final String? id;
-  final String _firstName;
-  final String _lastName;
-  final String _phoneNumber;
-  final String _password;
+  final String firstName;
+  final String lastName;
+  final String phoneNumber;
+  final String password;
 
   const Usermodel({
     this.id,
@@ -15,10 +15,10 @@ class Usermodel {
 
   toJson() {
     return {
-      "FirstName": _firstName,
-      "LastName": _lastName,
-      "Phone": _phoneNumber,
-      "Password": _password,
+      "FirstName": firstName,
+      "LastName": lastName,
+      "Phone": phoneNumber,
+      "Password": password,
     };
   }
 }
