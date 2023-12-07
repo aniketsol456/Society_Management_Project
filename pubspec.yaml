@@ -43,6 +43,7 @@ dependencies:
   cloud_firestore: ^4.13.3
   shared_preferences: ^2.2.2
   pinput: ^3.0.1
+  get_it: ^7.6.4
   
 
 dev_dependencies:
