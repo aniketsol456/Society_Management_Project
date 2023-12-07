@@ -8,6 +8,9 @@ class Usermodel {
 
   const Usermodel({
     this.id;
-    
+    required this.firstName;
+    required this.lastName;
+    required this.phoneNumber;
+    required this.password;
   })
 }
