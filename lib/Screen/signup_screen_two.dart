@@ -19,44 +19,44 @@ class _SignupScreentoState extends State<SignupScreento> {
   List<String> users = ['Secretary', 'Commitie Memeber', 'Society Member'];
   String wingAndFlatNo = ' ';
 
-  void submit_form() async {
-    String? role;
-    if (selectedUser == 'Secretary') {
-      role = 'Secretary';
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => SecretoryScreen(),
-        ),
-      );
-    } else if (selectedUser == 'Commitie Memeber') {
-      role = 'Committee Member';
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => SecretoryScreen(),
-        ),
-      );
-    } else if (selectedUser == 'Society Member') {
-      role = 'Society Member';
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => BottomNavScreen(),
-        ),
-      );
-    }
-    // Save user details to Firestore
-    // Save user details after successful phone verification if needed
-    // Use FirebaseFirestore.instance.collection('users').doc(uid).set({...});
-    await FirebaseFirestore.instance.collection('users').add({
-      'Role': role,
-      'Wing-Flat': wingAndFlatNo,
-      // You might want to avoid storing passwords directly in the database for security reasons
-      // Instead, consider using Firebase Authentication for user authentication
-      // 'password': _password,
-    });
-  }
+  // void submit_form() async {
+  //   String? role;
+  //   if (users == 'Secretary') {
+  //     role = 'Secretary';
+  //     Navigator.push(
+  //       context,
+  //       MaterialPageRoute(
+  //         builder: (context) => SecretoryScreen(),
+  //       ),
+  //     );
+  //   } else if (users == 'Commitie Memeber') {
+  //     role = 'Committee Member';
+  //     Navigator.push(
+  //       context,
+  //       MaterialPageRoute(
+  //         builder: (context) => SecretoryScreen(),
+  //       ),
+  //     );
+  //   } else if (users == 'Society Member') {
+  //     role = 'Society Member';
+  //     Navigator.push(
+  //       context,
+  //       MaterialPageRoute(
+  //         builder: (context) => BottomNavScreen(),
+  //       ),
+  //     );
+  //   }
+  //   // Save user details to Firestore
+  //   // Save user details after successful phone verification if needed
+  //   // Use FirebaseFirestore.instance.collection('users').doc(uid).set({...});
+  //   await FirebaseFirestore.instance.collection('users').add({
+  //     'Role': role,
+  //     'Wing-Flat': wingAndFlatNo,
+  //     // You might want to avoid storing passwords directly in the database for security reasons
+  //     // Instead, consider using Firebase Authentication for user authentication
+  //     // 'password': _password,
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -76,7 +76,7 @@ class _SignupScreentoState extends State<SignupScreento> {
       body: Center(
         child: Container(
           width: 350,
-          height: 450,
+          height: 475,
           decoration: BoxDecoration(
             color: Colors.white,
             border: Border.all(
