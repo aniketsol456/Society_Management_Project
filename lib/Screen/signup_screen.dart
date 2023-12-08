@@ -1,17 +1,18 @@
-// import 'package:cloud_firestore/cloud_firestore.dart';
-// import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:society_management_projecct/Screen/main_screen.dart';
 import 'package:society_management_projecct/Screen/otp_screen.dart';
-// import 'package:society_management_projecct/Screen/signup_screen_two.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:society_management_projecct/controller/signup_controller.dart';
 import 'package:society_management_projecct/src/feature/Authentication/models/User_model.dart';
+// import 'package:society_management_projecct/controller/signup_controller.dart';
+// import 'package:society_management_projecct/Screen/signup_screen_two.dart';
 // import 'package:cloud_firestore/cloud_firestore.dart';
+// import 'package:cloud_firestore/cloud_firestore.dart';
+// import 'package:firebase_core/firebase_core.dart';
 
 class SignupScreen extends StatefulWidget {
-  const SignupScreen({super.key});
+  const SignupScreen({Key? key}) : super(key: key);
 
   static String verify = "";
 
@@ -25,7 +26,7 @@ class _SignupScreenState extends State<SignupScreen> {
   // TextEditingController lastname = TextEditingController();
   // TextEditingController phone = TextEditingController();
   // TextEditingController password = TextEditingController();
-
+  final controller = SignupController.instance;
   final fromKey = GlobalKey<FormState>();
   bool _showPassword = true;
 
@@ -66,14 +67,15 @@ class _SignupScreenState extends State<SignupScreen> {
         _isValidConfirmPassword) {
       try {
         if (fromKey.currentState!.validate()) {
-          final Users = Usermodel(
+          final User = Usermodel(
             firstName: controller.firstname.text.trim(),
-            lastName: controller.lastName.text.trim(),
-            phoneNumber: controller.phoneNumber.text.trim(),
+            lastName: controller.lastname.text.trim(),
+            phoneNumber: controller.phone.text.trim(),
             password: controller.password.text.trim(),
           );
-          SignupController.instance.phoneAuthentication(Users);
-          Get.to(() => const OtpScreen());
+          // SignupController.instance.phoneAuthentication(Users);
+          await controller.createUser(User);
+          Get.to(() => OtpScreen());
         }
 
         await FirebaseAuth.instance.verifyPhoneNumber(

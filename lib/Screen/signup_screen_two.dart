@@ -1,9 +1,9 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:society_management_projecct/Screen/bottom_nav_screen.dart';
-import 'package:society_management_projecct/Screen/secretory_screen.dart';
+// import 'package:society_management_projecct/Screen/secretory_screen.dart';
 // import 'package:society_management_projecct/Screen/dashboard_screen.dart';
 // import 'package:society_management_projecct/Screen/otp_screen.dart';
+// import 'package:cloud_firestore/cloud_firestore.dart';
 
 class SignupScreento extends StatefulWidget {
   const SignupScreento({super.key});
