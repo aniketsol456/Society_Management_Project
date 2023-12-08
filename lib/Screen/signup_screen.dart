@@ -22,11 +22,7 @@ class SignupScreen extends StatefulWidget {
 
 class _SignupScreenState extends State<SignupScreen> {
   TextEditingController countrycode = TextEditingController();
-  // TextEditingController firstname = TextEditingController();
-  // TextEditingController lastname = TextEditingController();
-  // TextEditingController phone = TextEditingController();
-  // TextEditingController password = TextEditingController();
-  final controller = SignupController.instance;
+  final controller = Get.put(SignupController());
   final fromKey = GlobalKey<FormState>();
   bool _showPassword = true;
 
