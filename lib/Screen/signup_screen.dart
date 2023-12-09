@@ -38,6 +38,7 @@ class _SignupScreenState extends State<SignupScreen> {
   bool _isValidPassword = true;
   bool _isValidConfirmPassword = true;
 
+  // ignore: unused_element
   void _validateForm() {
     setState(() {
       _isValidFirstName = _firstName.isNotEmpty;

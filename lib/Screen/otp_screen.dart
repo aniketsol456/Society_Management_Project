@@ -113,11 +113,13 @@ class _OtpScreenState extends State<OtpScreen> {
       ),
     );
 
+    // ignore: unused_local_variable
     final focusedPinTheme = defaultPinTheme.copyDecorationWith(
       border: Border.all(color: Color.fromRGBO(114, 178, 238, 1)),
       borderRadius: BorderRadius.circular(8),
     );
 
+    // ignore: unused_local_variable
     final submittedPinTheme = defaultPinTheme.copyWith(
       decoration: defaultPinTheme.decoration?.copyWith(
         color: Color.fromRGBO(234, 239, 243, 1),
