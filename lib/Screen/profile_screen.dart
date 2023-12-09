@@ -1,4 +1,4 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+// import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -14,31 +14,31 @@ class _ProfilePageState extends State<ProfilePage> {
   late String phoneNumber = '';
 
   @override
-  void initState() {
-    super.initState();
-    // Call a function to fetch user data when the widget is initialized
-    fetchUserData();
-  }
+  // void initState() {
+  //   super.initState();
+  //   // Call a function to fetch user data when the widget is initialized
+  //   fetchUserData();
+  // }
 
-  Future<void> fetchUserData() async {
-    try {
-      // Fetch user data from Firestore assuming 'users' is your collection
-      DocumentSnapshot<Map<String, dynamic>> snapshot = await FirebaseFirestore
-          .instance
-          .collection('users')
-          .doc('userDocumentId')
-          .get();
+  // Future<void> fetchUserData() async {
+  //   try {
+  //     // Fetch user data from Firestore assuming 'users' is your collection
+  //     DocumentSnapshot<Map<String, dynamic>> snapshot = await FirebaseFirestore
+  //         .instance
+  //         .collection('users')
+  //         .doc('userDocumentId')
+  //         .get();
 
-      // Get data from the snapshot and update state
-      setState(() {
-        firstName = snapshot['firstName'];
-        lastName = snapshot['lastName'];
-        phoneNumber = snapshot['phoneNumber'];
-      });
-    } catch (e) {
-      print('Error fetching user data: $e');
-    }
-  }
+  //     // Get data from the snapshot and update state
+  //     setState(() {
+  //       firstName = snapshot['firstName'];
+  //       lastName = snapshot['lastName'];
+  //       phoneNumber = snapshot['phoneNumber'];
+  //     });
+  //   } catch (e) {
+  //     print('Error fetching user data: $e');
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -64,19 +64,31 @@ class _ProfilePageState extends State<ProfilePage> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Expanded(
-                    child: TextField(
-                      decoration: InputDecoration(
-                        border: InputBorder.none,
-                        hintText: 'First Name',
+                    child: Container(
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Colors.black),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: TextField(
+                        decoration: InputDecoration(
+                          border: InputBorder.none,
+                          hintText: 'First Name',
+                        ),
                       ),
                     ),
                   ),
                   SizedBox(width: 10.0),
                   Expanded(
-                    child: TextField(
-                      decoration: InputDecoration(
-                        border: InputBorder.none,
-                        hintText: 'Last Name',
+                    child: Container(
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Colors.black),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: TextField(
+                        decoration: InputDecoration(
+                          border: InputBorder.none,
+                          hintText: 'Last Name',
+                        ),
                       ),
                     ),
                   ),
@@ -86,19 +98,31 @@ class _ProfilePageState extends State<ProfilePage> {
               Row(
                 children: [
                   Expanded(
-                    child: TextField(
-                      decoration: InputDecoration(
-                        border: InputBorder.none,
-                        hintText: 'Wing',
+                    child: Container(
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Colors.black),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: TextField(
+                        decoration: InputDecoration(
+                          border: InputBorder.none,
+                          hintText: 'Wing-FlatNum',
+                        ),
                       ),
                     ),
                   ),
                   SizedBox(width: 10.0),
                   Expanded(
-                    child: TextField(
-                      decoration: InputDecoration(
-                        border: InputBorder.none,
-                        hintText: 'Flat Number',
+                    child: Container(
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Colors.black),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: TextField(
+                        decoration: InputDecoration(
+                          border: InputBorder.none,
+                          hintText: 'Role',
+                        ),
                       ),
                     ),
                   ),

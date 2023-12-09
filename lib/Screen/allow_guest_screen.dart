@@ -11,6 +11,8 @@ class AllowGuestScreen extends StatefulWidget {
 class _AllowGuestScreenState extends State<AllowGuestScreen> {
   TextEditingController _editingController = TextEditingController();
   String data = 'Aniket';
+  String Wing = 'B';
+  String Flat = '256';
   int code = 1;
 
   @override
