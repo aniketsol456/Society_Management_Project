@@ -4,7 +4,7 @@ import 'package:society_management_projecct/Screen/main_screen.dart';
 import 'package:society_management_projecct/Screen/otp_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:society_management_projecct/controller/signup_controller.dart';
-import 'package:society_management_projecct/src/feature/Authentication/models/User_model.dart';
+// import 'package:society_management_projecct/src/feature/Authentication/models/User_model.dart';
 // import 'package:society_management_projecct/controller/signup_controller.dart';
 // import 'package:society_management_projecct/Screen/signup_screen_two.dart';
 // import 'package:cloud_firestore/cloud_firestore.dart';
@@ -38,8 +38,46 @@ class _SignupScreenState extends State<SignupScreen> {
   bool _isValidPassword = true;
   bool _isValidConfirmPassword = true;
 
-  // ignore: unused_element
-  void _validateForm() {
+  void initstate() {
+    countrycode.text = "+91";
+    super.initState();
+  }
+
+  // void Verificationotp() async {
+  //   setState(() {
+  //     _isValidFirstName = _firstName.isNotEmpty;
+  //     _isValidLastName = _lastName.isNotEmpty;
+  //     _isValidPhoneNumber =
+  //         _phoneNumber.isNotEmpty && _phoneNumber.length == 10;
+  //     _isValidPassword = _password.isNotEmpty && _password.length >= 8;
+  //     _isValidConfirmPassword =
+  //         _confirmPassword == _password && _confirmPassword.isNotEmpty;
+  //   });
+  //   if (_isValidFirstName &&
+  //       _isValidLastName &&
+  //       _isValidPhoneNumber &&
+  //       _isValidPassword &&
+  //       _isValidConfirmPassword) {
+  //     try {
+  //       if (fromKey.currentState!.validate()) {
+  //         final User = Usermodel(
+  //           firstName: controller.firstname.text.trim(),
+  //           lastName: controller.lastname.text.trim(),
+  //           phoneNumber: controller.phone.text.trim(),
+  //           password: controller.password.text.trim(),
+  //         );
+  //         // SignupController.instance.phoneAuthentication(Users);
+  //         await controller.createUser(User);
+  //         Get.to(() => OtpScreen());
+  //       }
+
+  //     } catch (e) {
+  //       print('Unexpected error Having to Verify Otp at signup screen :$e');
+  //     }
+  //   }
+  // }
+
+  void Submitform() async {
     setState(() {
       _isValidFirstName = _firstName.isNotEmpty;
       _isValidLastName = _lastName.isNotEmpty;
@@ -49,51 +87,27 @@ class _SignupScreenState extends State<SignupScreen> {
       _isValidConfirmPassword =
           _confirmPassword == _password && _confirmPassword.isNotEmpty;
     });
-  }
-
-  void initstate() {
-    countrycode.text = "91";
-    super.initState();
-  }
-
-  void Verificationotp() async {
     if (_isValidFirstName &&
         _isValidLastName &&
         _isValidPhoneNumber &&
         _isValidPassword &&
         _isValidConfirmPassword) {
-      try {
-        if (fromKey.currentState!.validate()) {
-          final User = Usermodel(
-            firstName: controller.firstname.text.trim(),
-            lastName: controller.lastname.text.trim(),
-            phoneNumber: controller.phone.text.trim(),
-            password: controller.password.text.trim(),
+      await FirebaseAuth.instance.verifyPhoneNumber(
+        phoneNumber: '${countrycode.text + _phoneNumber}',
+        verificationCompleted: (PhoneAuthCredential credential) {},
+        verificationFailed: (FirebaseAuthException e) {},
+        codeSent: (String verificationId, int? resendToken) {
+          SignupScreen.verify = verificationId;
+          //Go to the next screen
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => OtpScreen(),
+            ),
           );
-          // SignupController.instance.phoneAuthentication(Users);
-          await controller.createUser(User);
-          Get.to(() => OtpScreen());
-        }
-
-        await FirebaseAuth.instance.verifyPhoneNumber(
-          phoneNumber: '${countrycode.text + _phoneNumber}',
-          verificationCompleted: (PhoneAuthCredential credential) {},
-          verificationFailed: (FirebaseAuthException e) {},
-          codeSent: (String verificationId, int? resendToken) {
-            SignupScreen.verify = verificationId;
-            //Go to the next screen
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => OtpScreen(),
-              ),
-            );
-          },
-          codeAutoRetrievalTimeout: (String verificationId) {},
-        );
-      } catch (e) {
-        print('Unexpected error Having to Verify Otp at signup screen :$e');
-      }
+        },
+        codeAutoRetrievalTimeout: (String verificationId) {},
+      );
     }
   }
 
@@ -300,7 +314,7 @@ class _SignupScreenState extends State<SignupScreen> {
                       backgroundColor: Colors.orange,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30))),
-                  onPressed: Verificationotp,
+                  onPressed: Submitform,
                   // () {
                   // Navigator.push(
                   //   context,
