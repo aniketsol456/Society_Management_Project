@@ -1,9 +1,11 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+// import 'package:get/get.dart';
 import 'package:society_management_projecct/Screen/main_screen.dart';
 import 'package:society_management_projecct/Screen/otp_screen.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:society_management_projecct/controller/signup_controller.dart';
+// import 'package:society_management_projecct/Screen/otp_screen.dart';
+// import 'package:firebase_auth/firebase_auth.dart';
+// import 'package:society_management_projecct/controller/signup_controller.dart';
 // import 'package:society_management_projecct/src/feature/Authentication/models/User_model.dart';
 // import 'package:society_management_projecct/controller/signup_controller.dart';
 // import 'package:society_management_projecct/Screen/signup_screen_two.dart';
@@ -13,7 +15,6 @@ import 'package:society_management_projecct/controller/signup_controller.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({Key? key}) : super(key: key);
-
   static String verify = "";
 
   @override
@@ -22,8 +23,6 @@ class SignupScreen extends StatefulWidget {
 
 class _SignupScreenState extends State<SignupScreen> {
   TextEditingController countrycode = TextEditingController();
-  final controller = Get.put(SignupController());
-  final fromKey = GlobalKey<FormState>();
   bool _showPassword = true;
 
   String _firstName = '';
@@ -43,72 +42,35 @@ class _SignupScreenState extends State<SignupScreen> {
     super.initState();
   }
 
-  // void Verificationotp() async {
-  //   setState(() {
-  //     _isValidFirstName = _firstName.isNotEmpty;
-  //     _isValidLastName = _lastName.isNotEmpty;
-  //     _isValidPhoneNumber =
-  //         _phoneNumber.isNotEmpty && _phoneNumber.length == 10;
-  //     _isValidPassword = _password.isNotEmpty && _password.length >= 8;
-  //     _isValidConfirmPassword =
-  //         _confirmPassword == _password && _confirmPassword.isNotEmpty;
-  //   });
-  //   if (_isValidFirstName &&
-  //       _isValidLastName &&
-  //       _isValidPhoneNumber &&
-  //       _isValidPassword &&
-  //       _isValidConfirmPassword) {
-  //     try {
-  //       if (fromKey.currentState!.validate()) {
-  //         final User = Usermodel(
-  //           firstName: controller.firstname.text.trim(),
-  //           lastName: controller.lastname.text.trim(),
-  //           phoneNumber: controller.phone.text.trim(),
-  //           password: controller.password.text.trim(),
-  //         );
-  //         // SignupController.instance.phoneAuthentication(Users);
-  //         await controller.createUser(User);
-  //         Get.to(() => OtpScreen());
-  //       }
-
-  //     } catch (e) {
-  //       print('Unexpected error Having to Verify Otp at signup screen :$e');
-  //     }
-  //   }
-  // }
-
-  void Submitform() async {
+  void validationofform() {
     setState(() {
       _isValidFirstName = _firstName.isNotEmpty;
       _isValidLastName = _lastName.isNotEmpty;
-      _isValidPhoneNumber =
-          _phoneNumber.isNotEmpty && _phoneNumber.length == 10;
+      _isValidPhoneNumber = _phoneNumber.isNotEmpty &&
+          _phoneNumber.length == 10 &&
+          countrycode.text.isNotEmpty;
       _isValidPassword = _password.isNotEmpty && _password.length >= 8;
       _isValidConfirmPassword =
           _confirmPassword == _password && _confirmPassword.isNotEmpty;
     });
-    if (_isValidFirstName &&
-        _isValidLastName &&
-        _isValidPhoneNumber &&
-        _isValidPassword &&
-        _isValidConfirmPassword) {
-      await FirebaseAuth.instance.verifyPhoneNumber(
-        phoneNumber: '${countrycode.text + _phoneNumber}',
-        verificationCompleted: (PhoneAuthCredential credential) {},
-        verificationFailed: (FirebaseAuthException e) {},
-        codeSent: (String verificationId, int? resendToken) {
-          SignupScreen.verify = verificationId;
-          //Go to the next screen
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => OtpScreen(),
-            ),
-          );
-        },
-        codeAutoRetrievalTimeout: (String verificationId) {},
-      );
-    }
+  }
+
+  void SubmitForm() async {
+    await FirebaseAuth.instance.verifyPhoneNumber(
+      phoneNumber: '${countrycode.text + _phoneNumber}',
+      verificationCompleted: (PhoneAuthCredential credential) {},
+      verificationFailed: (FirebaseAuthException e) {},
+      codeSent: (String verificationId, int? resendToken) {
+        SignupScreen.verify = verificationId;
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => OtpScreen(),
+          ),
+        );
+      },
+      codeAutoRetrievalTimeout: (String verificationId) {},
+    );
   }
 
   void ToshowPassword() {
@@ -120,6 +82,7 @@ class _SignupScreenState extends State<SignupScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // resizeToAvoidBottomInset: false,
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -173,7 +136,6 @@ class _SignupScreenState extends State<SignupScreen> {
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: TextField(
-                    controller: controller.firstname,
                     decoration: InputDecoration(
                       labelText: 'First name',
                       floatingLabelBehavior: FloatingLabelBehavior.never,
@@ -199,7 +161,6 @@ class _SignupScreenState extends State<SignupScreen> {
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: TextField(
-                    controller: controller.lastname,
                     decoration: InputDecoration(
                       border: InputBorder.none,
                       labelText: 'Last name',
@@ -225,8 +186,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: TextField(
-                    // controller: countrycode,
-                    controller: controller.phone,
+                    //controller: controller.phone,
                     keyboardType: TextInputType.number,
                     decoration: InputDecoration(
                       border: InputBorder.none,
@@ -253,7 +213,6 @@ class _SignupScreenState extends State<SignupScreen> {
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: TextField(
-                    controller: controller.password,
                     obscureText: _showPassword,
                     decoration: InputDecoration(
                       border: InputBorder.none,
@@ -314,7 +273,7 @@ class _SignupScreenState extends State<SignupScreen> {
                       backgroundColor: Colors.orange,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30))),
-                  onPressed: Submitform,
+                  onPressed: SubmitForm,
                   // () {
                   // Navigator.push(
                   //   context,

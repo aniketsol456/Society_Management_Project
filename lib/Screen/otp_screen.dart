@@ -3,9 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
 import 'package:society_management_projecct/Screen/signup_screen.dart';
 import 'package:society_management_projecct/Screen/signup_screen_two.dart';
-// import 'package:society_management_projecct/Screen/signup_screen_two.dart';
-// import 'package:society_management_projecct/Screen/bottom_nav_screen.dart';
-// import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 
 class OtpScreen extends StatefulWidget {
   @override
@@ -13,15 +10,6 @@ class OtpScreen extends StatefulWidget {
 }
 
 class _OtpScreenState extends State<OtpScreen> {
-  // void toSignupScreen() {
-  //   Navigator.push(
-  //     context,
-  //     MaterialPageRoute(
-  //       builder: (context) => SignupScreento(),
-  //     ),
-  //   );
-  // }
-
   // late String enteredOtp;
 
   // @override
