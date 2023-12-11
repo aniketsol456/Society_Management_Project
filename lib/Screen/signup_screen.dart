@@ -1,17 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-// import 'package:get/get.dart';
 import 'package:society_management_projecct/Screen/main_screen.dart';
 import 'package:society_management_projecct/Screen/otp_screen.dart';
-// import 'package:society_management_projecct/Screen/otp_screen.dart';
-// import 'package:firebase_auth/firebase_auth.dart';
-// import 'package:society_management_projecct/controller/signup_controller.dart';
-// import 'package:society_management_projecct/src/feature/Authentication/models/User_model.dart';
-// import 'package:society_management_projecct/controller/signup_controller.dart';
-// import 'package:society_management_projecct/Screen/signup_screen_two.dart';
-// import 'package:cloud_firestore/cloud_firestore.dart';
-// import 'package:cloud_firestore/cloud_firestore.dart';
-// import 'package:firebase_core/firebase_core.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({Key? key}) : super(key: key);
@@ -58,8 +49,25 @@ class _SignupScreenState extends State<SignupScreen> {
   void SubmitForm() async {
     await FirebaseAuth.instance.verifyPhoneNumber(
       phoneNumber: '${countrycode.text + _phoneNumber}',
-      verificationCompleted: (PhoneAuthCredential credential) {},
-      verificationFailed: (FirebaseAuthException e) {},
+      verificationCompleted: (PhoneAuthCredential credential) {
+        FirebaseAuth.instance.signInWithCredential(credential).then((value) {
+          FirebaseFirestore.instance.collection('Users').add({
+            'firstName': _firstName,
+            'lastName': _lastName,
+            'phoneNumber': _phoneNumber,
+            'password': _password,
+          }).then((value) {
+            print("User data stored succesfully in Firestore");
+          }).catchError((error) {
+            print("Failed to store user data:$error");
+          }).catchError((e) {
+            print("Error : $e");
+          });
+        });
+      },
+      verificationFailed: (FirebaseAuthException e) {
+        print("Verification Failed:$e");
+      },
       codeSent: (String verificationId, int? resendToken) {
         SignupScreen.verify = verificationId;
         Navigator.push(

@@ -1,16 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:society_management_projecct/Screen/splash_screen.dart';
-// import 'package:society_management_projecct/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
-// import 'package:society_management_projecct/Screen/allow_guest_screen.dart';
-// import 'package:society_management_projecct/Screen/secretory_screen.dart';
-// import 'package:society_management_projecct/Screen/otp_screen.dart';
-// import 'package:society_management_projecct/Screen/payment_screen.dart';
-// import 'package:society_management_projecct/Screen/bottom_nav_screen.dart';
-// import 'package:society_management_projecct/Screen/dashboard_screen.dart';
-// import 'Screen/splash_screen.dart';
-// ignore: duplicate_import
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
