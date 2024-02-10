@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:society_management_projecct/Screen/otp_screen.dart';
 import 'package:society_management_projecct/src/feature/Authentication/models/User_model.dart';
 import 'package:society_management_projecct/src/repository/user_repository.dart';
 
@@ -15,5 +16,11 @@ class SignupController extends GetxController {
 
   Future<void> createUser(Usermodel Users) async {
     await userRepo.createUser(Users);
+    // phoneAuthentication(Users.phoneNumber);
+    Get.to(() => OtpScreen());
   }
+
+  // void phoneAuthentication(String phoneNo) {
+  //   AuthenticationRepository.instance.phoneAuthentication(phoneNo);
+  // }
 }

@@ -49,21 +49,29 @@ class _SignupScreenState extends State<SignupScreen> {
   void SubmitForm() async {
     await FirebaseAuth.instance.verifyPhoneNumber(
       phoneNumber: '${countrycode.text + _phoneNumber}',
-      verificationCompleted: (PhoneAuthCredential credential) {
-        FirebaseAuth.instance.signInWithCredential(credential).then((value) {
-          FirebaseFirestore.instance.collection('Users').add({
+      verificationCompleted: (PhoneAuthCredential credential) async {
+        UserCredential userCredential =
+            await FirebaseAuth.instance.signInWithCredential(credential);
+
+        if (userCredential.user != null) {
+          // If user is verified, store user data in Firestore
+          await FirebaseFirestore.instance
+              .collection('users')
+              .doc(userCredential.user!.uid)
+              .set({
             'firstName': _firstName,
             'lastName': _lastName,
             'phoneNumber': _phoneNumber,
             'password': _password,
-          }).then((value) {
-            print("User data stored succesfully in Firestore");
-          }).catchError((error) {
-            print("Failed to store user data:$error");
-          }).catchError((e) {
-            print("Error : $e");
+            // Avoid storing password in plain text in Firestore for security reasons
+            // Instead, use a more secure authentication method like Firebase Auth
+            // 'password': _password, // Avoid storing password directly in Firestore
           });
-        });
+
+          print("User data stored successfully in Firestore");
+        } else {
+          print("Failed to verify user");
+        }
       },
       verificationFailed: (FirebaseAuthException e) {
         print("Verification Failed:$e");

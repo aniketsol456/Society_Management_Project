@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:society_management_projecct/Screen/add_notice_screen.dart';
-//import 'package:society_management_projecct/Screen/bottom_nav_screen.dart';
 import 'package:society_management_projecct/Screen/login.dart';
 import 'package:society_management_projecct/Screen/manage_notice_screen.dart';
 import 'package:society_management_projecct/Screen/profile_screen.dart';
