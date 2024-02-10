@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:society_management_projecct/Screen/secretory_screen.dart';
 import 'package:society_management_projecct/Screen/splash_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 // import 'package:society_management_projecct/Screen/otp_screen.dart';
@@ -42,16 +43,15 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
         //useMaterial3: true,
       ),
-      home: SplashScreen(),
+      // home: SplashScreen(),
       // home: PaymentScreen(),
       // home: OtpScreen(),
-      // home: SecretoryScr
-      // een(),
+      home: SecretoryScreen(),
       // home: AllowGuestScreen(),
       // home: SignupScreento(),
     );
   }
-}
+
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
