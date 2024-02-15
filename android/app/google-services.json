@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "1062424957702",
+    "firebase_url": "https://society-talk-default-rtdb.firebaseio.com",
     "project_id": "society-talk",
     "storage_bucket": "society-talk.appspot.com"
   },
