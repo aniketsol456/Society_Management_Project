@@ -17,7 +17,10 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      return web;
+      throw UnsupportedError(
+        'DefaultFirebaseOptions have not been configured for web - '
+        'you can reconfigure this by running the FlutterFire CLI again.',
+      );
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -25,7 +28,10 @@ class DefaultFirebaseOptions {
       case TargetPlatform.iOS:
         return ios;
       case TargetPlatform.macOS:
-        return macos;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for macos - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.windows:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for windows - '
@@ -43,42 +49,20 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyD09m-Wr-WMqq3nvA6qmqlNoVOzdRFwnLY',
-    appId: '1:1062424957702:web:6d8b37374fb432846f0487',
-    messagingSenderId: '1062424957702',
-    projectId: 'society-talk',
-    authDomain: 'society-talk.firebaseapp.com',
-    databaseURL: 'https://society-talk-default-rtdb.firebaseio.com',
-    storageBucket: 'society-talk.appspot.com',
-  );
-
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyD6lWv57hUFp-_wlZt0xF-Gr3w2WPLZ80o',
-    appId: '1:1062424957702:android:d661b40096e9ab4a6f0487',
-    messagingSenderId: '1062424957702',
-    projectId: 'society-talk',
-    databaseURL: 'https://society-talk-default-rtdb.firebaseio.com',
-    storageBucket: 'society-talk.appspot.com',
+    apiKey: 'AIzaSyADXaAepQf99emaJ8PharAXHaEGvtdQqSM',
+    appId: '1:92806759041:android:b78b1fd6ed3c8373a80380',
+    messagingSenderId: '92806759041',
+    projectId: 'society-a637e',
+    storageBucket: 'society-a637e.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyAx5xqOGhe5Q888cuTtS_yPSH_KyScDFOg',
-    appId: '1:1062424957702:ios:a2e76ad653a2365a6f0487',
-    messagingSenderId: '1062424957702',
-    projectId: 'society-talk',
-    databaseURL: 'https://society-talk-default-rtdb.firebaseio.com',
-    storageBucket: 'society-talk.appspot.com',
+    apiKey: 'AIzaSyBYGgFcfp2ri43Zb5jJCitmhsu2mKfZSP4',
+    appId: '1:92806759041:ios:8f92595f4a6b9767a80380',
+    messagingSenderId: '92806759041',
+    projectId: 'society-a637e',
+    storageBucket: 'society-a637e.appspot.com',
     iosBundleId: 'com.example.societyManagementProjecct',
-  );
-
-  static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyAx5xqOGhe5Q888cuTtS_yPSH_KyScDFOg',
-    appId: '1:1062424957702:ios:7c818088d62d0cdf6f0487',
-    messagingSenderId: '1062424957702',
-    projectId: 'society-talk',
-    databaseURL: 'https://society-talk-default-rtdb.firebaseio.com',
-    storageBucket: 'society-talk.appspot.com',
-    iosBundleId: 'com.example.societyManagementProjecct.RunnerTests',
   );
 }
