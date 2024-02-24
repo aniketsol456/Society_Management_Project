@@ -23,15 +23,6 @@ class _LoginScreenState extends State<LoginScreen> {
         context, MaterialPageRoute(builder: (context) => SignupScreen()));
   }
 
-  // void NavigateToBootomNav() {
-  //   Navigator.pushReplacement(
-  //     context,
-  //     MaterialPageRoute(
-  //       builder: (context) => BottomNavScreen(),
-  //     ),
-  //   );
-  // }
-
   void NavigateToBootomNav() {
     setState(() {
       numerrortext =
