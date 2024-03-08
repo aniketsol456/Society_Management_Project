@@ -1,6 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:society_management_projecct/User_Screen/main_screen.dart';
-import 'package:society_management_projecct/User_Screen/otp_screen.dart';
+// import 'package:society_management_projecct/User_Screen/otp_screen.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({Key? key}) : super(key: key);
@@ -11,6 +12,7 @@ class SignupScreen extends StatefulWidget {
 
 class _SignupScreenState extends State<SignupScreen> {
   TextEditingController countrycode = TextEditingController();
+  String phone = "";
   bool _showPassword = true;
 
   String _firstName = '';
@@ -49,7 +51,15 @@ class _SignupScreenState extends State<SignupScreen> {
     });
   }
 
-  void ToOtpScreen() {}
+  void ToOtpScreen() async {
+    await FirebaseAuth.instance.verifyPhoneNumber(
+      phoneNumber: '${countrycode.text + phone}',
+      verificationCompleted: (PhoneAuthCredential credential) {},
+      verificationFailed: (FirebaseAuthException e) {},
+      codeSent: (String verificationId, int? resendToken) {},
+      codeAutoRetrievalTimeout: (String verificationId) {},
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -170,7 +180,7 @@ class _SignupScreenState extends State<SignupScreen> {
                           : null,
                     ),
                     onChanged: (value) {
-                      _phoneNumber = value;
+                      phone = value;
                     },
                   ),
                 ),
@@ -248,14 +258,15 @@ class _SignupScreenState extends State<SignupScreen> {
                       borderRadius: BorderRadius.circular(30),
                     ),
                   ),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => OtpScreen(),
-                      ),
-                    );
-                  },
+                  onPressed: ToOtpScreen,
+                  // onPressed: () {
+                  //   Navigator.push(
+                  //     context,
+                  //     MaterialPageRoute(
+                  //       builder: (context) => OtpScreen(),
+                  //     ),
+                  //   );
+                  // },
                   child: Text(
                     'Continue',
                     style: TextStyle(
