@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "902630559715",
-    "project_id": "societymanagementproject-86b4b",
-    "storage_bucket": "societymanagementproject-86b4b.appspot.com"
+    "project_number": "119849396751",
+    "project_id": "societymanagementproject-c9d7b",
+    "storage_bucket": "societymanagementproject-c9d7b.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:902630559715:android:4a21ccc56e268b581fdad6",
+        "mobilesdk_app_id": "1:119849396751:android:d0058f41079fb89d25117a",
         "android_client_info": {
           "package_name": "com.example.society_management_projecct"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyAGDYhIegEDrwlfs0Igg64RUzsrxP0KhqA"
+          "current_key": "AIzaSyDnssme-pqa0Mn-bsilambU1Gu40kheKHE"
         }
       ],
       "services": {

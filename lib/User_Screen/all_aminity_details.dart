@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:society_management_projecct/Screen/payment_screen.dart';
+import 'package:society_management_projecct/User_Screen/payment_screen.dart';
 
 class AllaminityScreen extends StatefulWidget {
   const AllaminityScreen({super.key});

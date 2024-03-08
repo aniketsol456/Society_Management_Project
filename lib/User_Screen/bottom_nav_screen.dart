@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:society_management_projecct/Screen/community_screen.dart';
-import 'package:society_management_projecct/Screen/dashboard_screen.dart';
-import 'package:society_management_projecct/Screen/service_screen.dart';
-import 'package:society_management_projecct/Screen/update_screen.dart';
+import 'package:society_management_projecct/User_Screen/community_screen.dart';
+import 'package:society_management_projecct/User_Screen/dashboard_screen.dart';
+import 'package:society_management_projecct/User_Screen/service_screen.dart';
+import 'package:society_management_projecct/User_Screen/update_screen.dart';
 
 class BottomNavScreen extends StatefulWidget {
   const BottomNavScreen({super.key});

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:society_management_projecct/Screen/bottom_nav_screen.dart';
-import 'package:society_management_projecct/Screen/main_screen.dart';
-import 'package:society_management_projecct/Screen/signup_screen.dart';
+import 'package:society_management_projecct/User_Screen/bottom_nav_screen.dart';
+import 'package:society_management_projecct/User_Screen/main_screen.dart';
+import 'package:society_management_projecct/User_Screen/signup_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});

@@ -17,10 +17,7 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      throw UnsupportedError(
-        'DefaultFirebaseOptions have not been configured for web - '
-        'you can reconfigure this by running the FlutterFire CLI again.',
-      );
+      return web;
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -49,20 +46,30 @@ class DefaultFirebaseOptions {
     }
   }
 
+  static const FirebaseOptions web = FirebaseOptions(
+    apiKey: 'AIzaSyC9nI3yCDn07C589lDLjYt8Q449PFK26XU',
+    appId: '1:119849396751:web:2e208ee5f076889125117a',
+    messagingSenderId: '119849396751',
+    projectId: 'societymanagementproject-c9d7b',
+    authDomain: 'societymanagementproject-c9d7b.firebaseapp.com',
+    storageBucket: 'societymanagementproject-c9d7b.appspot.com',
+    measurementId: 'G-H4WPY9009W',
+  );
+
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyAGDYhIegEDrwlfs0Igg64RUzsrxP0KhqA',
-    appId: '1:902630559715:android:4a21ccc56e268b581fdad6',
-    messagingSenderId: '902630559715',
-    projectId: 'societymanagementproject-86b4b',
-    storageBucket: 'societymanagementproject-86b4b.appspot.com',
+    apiKey: 'AIzaSyDnssme-pqa0Mn-bsilambU1Gu40kheKHE',
+    appId: '1:119849396751:android:d0058f41079fb89d25117a',
+    messagingSenderId: '119849396751',
+    projectId: 'societymanagementproject-c9d7b',
+    storageBucket: 'societymanagementproject-c9d7b.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyAgBTTUxd07O6xtUKh4RhQwsqNQ4RZxjns',
-    appId: '1:902630559715:ios:efd00ae331cb625d1fdad6',
-    messagingSenderId: '902630559715',
-    projectId: 'societymanagementproject-86b4b',
-    storageBucket: 'societymanagementproject-86b4b.appspot.com',
+    apiKey: 'AIzaSyBmacbr60TO1QyUOoy5cFDFRSwSmn9c8vo',
+    appId: '1:119849396751:ios:e3777047cdf06f1b25117a',
+    messagingSenderId: '119849396751',
+    projectId: 'societymanagementproject-c9d7b',
+    storageBucket: 'societymanagementproject-c9d7b.appspot.com',
     iosBundleId: 'com.example.societyManagementProjecct',
   );
 }

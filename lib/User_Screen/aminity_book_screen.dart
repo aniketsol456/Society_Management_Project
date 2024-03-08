@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:society_management_projecct/Screen/all_aminity_details.dart';
+import 'package:society_management_projecct/User_Screen/all_aminity_details.dart';
 
 class AminityBookScreen extends StatefulWidget {
   const AminityBookScreen({super.key});

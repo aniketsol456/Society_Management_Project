@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:society_management_projecct/Screen/add_notice_screen.dart';
-import 'package:society_management_projecct/Screen/login.dart';
-import 'package:society_management_projecct/Screen/manage_notice_screen.dart';
-import 'package:society_management_projecct/Screen/profile_screen.dart';
-import 'package:society_management_projecct/Screen/rate_of_us_screen.dart';
+import 'package:society_management_projecct/User_Screen/add_notice_screen.dart';
+import 'package:society_management_projecct/User_Screen/login.dart';
+import 'package:society_management_projecct/User_Screen/manage_notice_screen.dart';
+import 'package:society_management_projecct/User_Screen/profile_screen.dart';
+import 'package:society_management_projecct/User_Screen/rate_of_us_screen.dart';
 
 class SecretoryScreen extends StatefulWidget {
   const SecretoryScreen({super.key});

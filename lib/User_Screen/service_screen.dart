@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:society_management_projecct/Screen/bottom_nav_screen.dart';
-import 'package:society_management_projecct/Screen/service_booking_screen.dart';
+import 'package:society_management_projecct/User_Screen/bottom_nav_screen.dart';
+import 'package:society_management_projecct/User_Screen/service_booking_screen.dart';
 
 class ServiceScreen extends StatefulWidget {
   const ServiceScreen({super.key});

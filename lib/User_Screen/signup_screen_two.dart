@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:society_management_projecct/Screen/bottom_nav_screen.dart';
+import 'package:society_management_projecct/User_Screen/bottom_nav_screen.dart';
 // import 'package:society_management_projecct/Screen/secretory_screen.dart';
 // import 'package:society_management_projecct/Screen/dashboard_screen.dart';
 // import 'package:society_management_projecct/Screen/otp_screen.dart';

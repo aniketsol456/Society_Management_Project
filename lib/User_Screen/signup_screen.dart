@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:society_management_projecct/Screen/main_screen.dart';
-import 'package:society_management_projecct/Screen/otp_screen.dart';
+import 'package:society_management_projecct/User_Screen/main_screen.dart';
+import 'package:society_management_projecct/User_Screen/otp_screen.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({Key? key}) : super(key: key);

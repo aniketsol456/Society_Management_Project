@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:society_management_projecct/Screen/allow_guest_screen.dart';
-import 'package:society_management_projecct/Screen/aminity_book_screen.dart';
-import 'package:society_management_projecct/Screen/bottom_nav_screen.dart';
-import 'package:society_management_projecct/Screen/login.dart';
-import 'package:society_management_projecct/Screen/profile_screen.dart';
-import 'package:society_management_projecct/Screen/rate_of_us_screen.dart';
+import 'package:society_management_projecct/User_Screen/allow_guest_screen.dart';
+import 'package:society_management_projecct/User_Screen/aminity_book_screen.dart';
+import 'package:society_management_projecct/User_Screen/bottom_nav_screen.dart';
+import 'package:society_management_projecct/User_Screen/login.dart';
+import 'package:society_management_projecct/User_Screen/profile_screen.dart';
+import 'package:society_management_projecct/User_Screen/rate_of_us_screen.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:society_management_projecct/Screen/login.dart';
-import 'package:society_management_projecct/Screen/signup_screen.dart';
+import 'package:society_management_projecct/User_Screen/login.dart';
+import 'package:society_management_projecct/User_Screen/signup_screen.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
