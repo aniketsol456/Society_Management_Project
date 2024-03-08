@@ -1,6 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:society_management_projecct/User_Screen/main_screen.dart';
+import 'package:society_management_projecct/feature/Authentication/models/User_model.dart';
+import 'package:society_management_projecct/firebase_api/usermodel_api.dart';
 // import 'package:society_management_projecct/User_Screen/otp_screen.dart';
 
 class SignupScreen extends StatefulWidget {
@@ -11,6 +13,7 @@ class SignupScreen extends StatefulWidget {
 }
 
 class _SignupScreenState extends State<SignupScreen> {
+  final Userapi userapi = Userapi();
   TextEditingController countrycode = TextEditingController();
   String phone = "";
   bool _showPassword = true;
@@ -52,13 +55,13 @@ class _SignupScreenState extends State<SignupScreen> {
   }
 
   void ToOtpScreen() async {
-    await FirebaseAuth.instance.verifyPhoneNumber(
-      phoneNumber: '${countrycode.text + phone}',
-      verificationCompleted: (PhoneAuthCredential credential) {},
-      verificationFailed: (FirebaseAuthException e) {},
-      codeSent: (String verificationId, int? resendToken) {},
-      codeAutoRetrievalTimeout: (String verificationId) {},
-    );
+    // await FirebaseAuth.instance.verifyPhoneNumber(
+    //   phoneNumber: '${countrycode.text + phone}',
+    //   verificationCompleted: (PhoneAuthCredential credential) {},
+    //   verificationFailed: (FirebaseAuthException e) {},
+    //   codeSent: (String verificationId, int? resendToken) {},
+    //   codeAutoRetrievalTimeout: (String verificationId) {},
+    // );
   }
 
   @override
