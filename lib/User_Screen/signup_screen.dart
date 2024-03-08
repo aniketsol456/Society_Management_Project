@@ -1,7 +1,7 @@
-import 'package:firebase_auth/firebase_auth.dart';
+// import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:society_management_projecct/User_Screen/main_screen.dart';
-import 'package:society_management_projecct/feature/Authentication/models/User_model.dart';
+// import 'package:society_management_projecct/feature/Authentication/models/User_model.dart';
 import 'package:society_management_projecct/firebase_api/usermodel_api.dart';
 // import 'package:society_management_projecct/User_Screen/otp_screen.dart';
 
