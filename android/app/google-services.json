@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "188029940357",
-    "project_id": "society-talks",
-    "storage_bucket": "society-talks.appspot.com"
+    "project_number": "902630559715",
+    "project_id": "societymanagementproject-86b4b",
+    "storage_bucket": "societymanagementproject-86b4b.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:188029940357:android:df45d1dc68ce4d04c06fec",
+        "mobilesdk_app_id": "1:902630559715:android:4a21ccc56e268b581fdad6",
         "android_client_info": {
           "package_name": "com.example.society_management_projecct"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyB1kjXrFrgc6Th_mRUuq_i3hm-0jfpwF78"
+          "current_key": "AIzaSyAGDYhIegEDrwlfs0Igg64RUzsrxP0KhqA"
         }
       ],
       "services": {

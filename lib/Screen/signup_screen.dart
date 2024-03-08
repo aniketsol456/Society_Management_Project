@@ -1,12 +1,9 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:society_management_projecct/Screen/main_screen.dart';
 import 'package:society_management_projecct/Screen/otp_screen.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({Key? key}) : super(key: key);
-  static String verify = "";
 
   @override
   State<SignupScreen> createState() => _SignupScreenState();
@@ -46,54 +43,13 @@ class _SignupScreenState extends State<SignupScreen> {
     });
   }
 
-  void SubmitForm() async {
-    await FirebaseAuth.instance.verifyPhoneNumber(
-      phoneNumber: '${countrycode.text + _phoneNumber}',
-      verificationCompleted: (PhoneAuthCredential credential) async {
-        UserCredential userCredential =
-            await FirebaseAuth.instance.signInWithCredential(credential);
-
-        if (userCredential.user != null) {
-          // If user is verified, store user data in Firestore
-          await FirebaseFirestore.instance
-              .collection('users')
-              .doc(userCredential.user!.uid)
-              .set({
-            'firstName': _firstName,
-            'lastName': _lastName,
-            'phoneNumber': _phoneNumber,
-            'password': _password,
-            // Avoid storing password in plain text in Firestore for security reasons
-            // Instead, use a more secure authentication method like Firebase Auth
-            // 'password': _password, // Avoid storing password directly in Firestore
-          });
-
-          print("User data stored successfully in Firestore");
-        } else {
-          print("Failed to verify user");
-        }
-      },
-      verificationFailed: (FirebaseAuthException e) {
-        print("Verification Failed:$e");
-      },
-      codeSent: (String verificationId, int? resendToken) {
-        SignupScreen.verify = verificationId;
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => OtpScreen(),
-          ),
-        );
-      },
-      codeAutoRetrievalTimeout: (String verificationId) {},
-    );
-  }
-
   void ToshowPassword() {
     setState(() {
       _showPassword = !_showPassword;
     });
   }
+
+  void ToOtpScreen() {}
 
   @override
   Widget build(BuildContext context) {
@@ -136,9 +92,10 @@ class _SignupScreenState extends State<SignupScreen> {
                 Text(
                   'Create an Account',
                   style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black),
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                  ),
                 ),
                 SizedBox(
                   height: 5,
@@ -286,18 +243,19 @@ class _SignupScreenState extends State<SignupScreen> {
                 ),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.orange,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30))),
-                  onPressed: SubmitForm,
-                  // () {
-                  // Navigator.push(
-                  //   context,
-                  //   MaterialPageRoute(
-                  //     builder: (context) => SignupScreento(),
-                  //   ),
-                  // );
-                  // },
+                    backgroundColor: Colors.orange,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                  ),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => OtpScreen(),
+                      ),
+                    );
+                  },
                   child: Text(
                     'Continue',
                     style: TextStyle(

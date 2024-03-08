@@ -50,19 +50,19 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyB1kjXrFrgc6Th_mRUuq_i3hm-0jfpwF78',
-    appId: '1:188029940357:android:df45d1dc68ce4d04c06fec',
-    messagingSenderId: '188029940357',
-    projectId: 'society-talks',
-    storageBucket: 'society-talks.appspot.com',
+    apiKey: 'AIzaSyAGDYhIegEDrwlfs0Igg64RUzsrxP0KhqA',
+    appId: '1:902630559715:android:4a21ccc56e268b581fdad6',
+    messagingSenderId: '902630559715',
+    projectId: 'societymanagementproject-86b4b',
+    storageBucket: 'societymanagementproject-86b4b.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyAVyy9h0r2J3_wzEdJooiIAvXQC7XjhfJY',
-    appId: '1:188029940357:ios:e0af49a17f1098dbc06fec',
-    messagingSenderId: '188029940357',
-    projectId: 'society-talks',
-    storageBucket: 'society-talks.appspot.com',
+    apiKey: 'AIzaSyAgBTTUxd07O6xtUKh4RhQwsqNQ4RZxjns',
+    appId: '1:902630559715:ios:efd00ae331cb625d1fdad6',
+    messagingSenderId: '902630559715',
+    projectId: 'societymanagementproject-86b4b',
+    storageBucket: 'societymanagementproject-86b4b.appspot.com',
     iosBundleId: 'com.example.societyManagementProjecct',
   );
 }
