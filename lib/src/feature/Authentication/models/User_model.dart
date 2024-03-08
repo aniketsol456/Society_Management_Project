@@ -23,16 +23,4 @@ class Usermodel {
       "Password": password,
     };
   }
-
-  factory Usermodel.fromSnapshot(
-      DocumentSnapshot<Map<String, dynamic>> document) {
-    final data = document.data()!;
-    return Usermodel(
-      id: document.id,
-      firstName: data["firstname"],
-      lastName: data["lastname"],
-      phoneNumber: data["phoneno."],
-      password: data["password"],
-    );
-  }
 }
