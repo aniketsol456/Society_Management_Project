@@ -174,7 +174,7 @@ class _SignupScreenState extends State<SignupScreen> {
                   ),
                   child: TextField(
                     //controller: controller.phone,
-                    keyboardType: TextInputType.number,
+                    keyboardType: TextInputType.phone,
                     decoration: InputDecoration(
                       border: InputBorder.none,
                       labelText: 'Enter a Mobile No.',

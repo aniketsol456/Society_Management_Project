@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
-// import 'package:society_management_projecct/Screen/signup_screen_two.dart';
+//import 'package:society_management_projecct/Screen/signup_screen_two.dart';
 
 class OtpScreen extends StatefulWidget {
   @override
